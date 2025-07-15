@@ -1,0 +1,42 @@
+16:35:42 **** Incremental Build of configuration Debug for project Teste_SG90 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:96:32: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
+   96 |   HAL_UART_Receive_IT(&huart2, recebido, 3);
+      |                                ^~~~~~~~
+      |                                |
+      |                                int *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:175:21: warning: implicit declaration of function 'atoi' [-Wimplicit-function-declaration]
+  175 |         int valor = atoi(recebido); // converte o char para int
+      |                     ^~~~
+../Core/Src/main.c:178:38: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
+  178 |         HAL_UART_Receive_IT(&huart2, recebido, 3);
+      |                                      ^~~~~~~~
+      |                                      |
+      |                                      int *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int *'
+  748 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Teste_SG90.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Teste_SG90\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Teste_SG90.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Teste_SG90.elf
+ 
+arm-none-eabi-size  Teste_SG90.elf 
+arm-none-eabi-objdump -h -S Teste_SG90.elf  > "Teste_SG90.list"
+   text	   data	    bss	    dec	    hex	filename
+  16116	     92	   2044	  18252	   474c	Teste_SG90.elf
+Finished building: default.size.stdout
+ 
+Finished building: Teste_SG90.list
+ 
+
+16:35:43 Build Finished. 0 errors, 3 warnings. (took 1s.301ms)
+
