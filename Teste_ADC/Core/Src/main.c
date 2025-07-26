@@ -105,7 +105,7 @@ int main(void)
 	  if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
 	  {
 		  valorADC = HAL_ADC_GetValue(&hadc1);
-		  valorADC = (200 + ((valorADC * 200) / 4095));
+		  valorADC = (120 + ((valorADC * 380) / 4095));
 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, valorADC);
 	  }
 	  HAL_Delay(50);
