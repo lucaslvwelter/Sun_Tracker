@@ -49,8 +49,9 @@
 
 /* USER CODE BEGIN PV */
 uint32_t valorADC1 = 0, valorADC2 = 0;
-int difADCs = 0, razADC = 0;
-char frase[50];
+int difADCs = 0;
+float razADC = 0, v1, v2;
+char frase[100];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -117,33 +118,21 @@ int main(void)
 		  valorADC2 = HAL_ADC_GetValue(&hadc2);
 	  }
 
-	  /*
-	  //difADCs = valorADC1 - valorADC2;
-	  //difADCs = abs(difADCs);
-	  if(valorADC1 < valorADC2)
-	  {
-		  difADCs = 120 + ((difADCs * 380) / 4095);
-	  }
-
-	  if(valorADC1 > valorADC2)
-	  {
-		  difADCs = 500 - ((difADCs * 380) / 4095);
-	  }
-	  */
-
 	  valorADC1 = 4095 - valorADC1;
 	  valorADC2 = 4095 - valorADC2;
+	  v1 = (float)valorADC1;
+	  v2 = (float)valorADC2;
 
-	  // TIRAR A RAIZ DE CADA VALOR PODE CORRIGIR O PROBLEMA DA DISTANCIA !!!!
-	  razADC = valorADC1 / (valorADC1 + valorADC2);
-
+	  razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
+	  razADC = (razADC - 0.425) / (0.625 - 0.425);
+	  if(razADC < 0) razADC = 0;
+	  if(razADC > 1) razADC = 1;
+	  sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+	  HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
 	  razADC = 120 + (razADC * 380);
 
 	  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
-	  //sprintf(frase, "dif = %d | v1 = %d | v2 = %d\n\r", difADCs, valorADC1, valorADC2);
-	  //HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
 	  HAL_Delay(50);
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

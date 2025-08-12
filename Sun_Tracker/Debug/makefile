@@ -61,7 +61,7 @@ main-build: Sun_Tracker.elf secondary-outputs
 
 # Tool invocations
 Sun_Tracker.elf Sun_Tracker.map: $(OBJS) $(USER_OBJS) C:\Users\lucas\Documents\4º\ Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

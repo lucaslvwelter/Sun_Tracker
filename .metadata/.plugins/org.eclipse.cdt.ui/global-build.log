@@ -410,3 +410,1088 @@ Finished building: default.size.stdout
  
 Finished building: Sun_Tracker.list
  
+09:10:58 **** Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |           sprintf(frase, "raz = %d\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:141:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  141 |           sprintf(frase, "raz = %d\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:141:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:142:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  142 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  18612	     92	   2252	  20956	   51dc	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:14:31 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "raz = %d\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "raz = %d\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:34: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  139 |           sprintf(frase, "raz = %d\n\r", razADC);
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  int     double
+      |                                 %f
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  19544	     92	   2252	  21888	   5580	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:17:18 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "raz = %.2f\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "raz = %.2f\n\r", razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31184	    468	   2260	  33912	   8478	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:18:29 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %.2f\n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %.2f\n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %.2f\n\r", valorADC1, valorADC2, razADC);
+      |                                ~^                              ~~~~~~~~~
+      |                                 |                              |
+      |                                 int                            uint32_t {aka long unsigned int}
+      |                                %ld
+../Core/Src/main.c:139:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %.2f\n\r", valorADC1, valorADC2, razADC);
+      |                                          ~^                               ~~~~~~~~~
+      |                                           |                               |
+      |                                           int                             uint32_t {aka long unsigned int}
+      |                                          %ld
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31224	    468	   2260	  33952	   84a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:19:04 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f\n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f\n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f\n\r", valorADC1, valorADC2, razADC);
+      |                                ~^                            ~~~~~~~~~
+      |                                 |                            |
+      |                                 int                          uint32_t {aka long unsigned int}
+      |                                %ld
+../Core/Src/main.c:139:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f\n\r", valorADC1, valorADC2, razADC);
+      |                                          ~^                             ~~~~~~~~~
+      |                                           |                             |
+      |                                           int                           uint32_t {aka long unsigned int}
+      |                                          %ld
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31216	    468	   2260	  33944	   8498	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:22:21 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                ~^                             ~~~~~~~~~
+      |                                 |                             |
+      |                                 int                           uint32_t {aka long unsigned int}
+      |                                %ld
+../Core/Src/main.c:139:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                          ~^                              ~~~~~~~~~
+      |                                           |                              |
+      |                                           int                            uint32_t {aka long unsigned int}
+      |                                          %ld
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31216	    468	   2260	  33944	   8498	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:22:39 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-size  Sun_Tracker.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31216	    468	   2260	  33944	   8498	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+09:24:08 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                ~^                             ~~~~~~~~~
+      |                                 |                             |
+      |                                 int                           uint32_t {aka long unsigned int}
+      |                                %ld
+../Core/Src/main.c:139:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                          ~^                              ~~~~~~~~~
+      |                                           |                              |
+      |                                           int                            uint32_t {aka long unsigned int}
+      |                                          %ld
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31216	    468	   2260	  33944	   8498	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:26:06 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:139:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:139:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:139:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:139:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                ~^                             ~~~~~~~~~
+      |                                 |                             |
+      |                                 int                           double
+      |                                %f
+../Core/Src/main.c:139:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+  139 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", valorADC1, valorADC2, razADC);
+      |                                          ~^                              ~~~~~~~~~
+      |                                           |                              |
+      |                                           int                            double
+      |                                          %f
+../Core/Src/main.c:140:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  140 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31280	    468	   2260	  34008	   84d8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:29:22 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:141:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:141:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:141:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |                                ~^                             ~~
+      |                                 |                             |
+      |                                 int                           double
+      |                                %f
+../Core/Src/main.c:141:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |                                          ~^                       ~~
+      |                                           |                       |
+      |                                           int                     double
+      |                                          %f
+../Core/Src/main.c:142:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  142 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31288	    468	   2268	  34024	   84e8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:31:11 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:141:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:141:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:141:33: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |                                ~^                             ~~
+      |                                 |                             |
+      |                                 int                           double
+      |                                %f
+../Core/Src/main.c:141:43: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+  141 |           sprintf(frase, "v1 = %d - v2 = %d - raz = %f \n\r", v1, v2, razADC);
+      |                                          ~^                       ~~
+      |                                           |                       |
+      |                                           int                     double
+      |                                          %f
+../Core/Src/main.c:142:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  142 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31288	    468	   2316	  34072	   8518	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:34:48 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:141:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  141 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:141:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:142:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  142 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  31288	    468	   2316	  34072	   8518	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+09:38:43 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:141:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  141 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:141:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:142:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  142 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32072	    468	   2316	  34856	   8828	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:19:13 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:128:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  128 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:128:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  128 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:128:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:129:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  129 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32144	    468	   2316	  34928	   8870	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:20:04 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  129 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:129:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  129 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:129:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:130:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  130 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32168	    468	   2316	  34952	   8888	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:21:19 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:23:30 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32192	    468	   2316	  34976	   88a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:24:05 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:25:09 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32192	    468	   2316	  34976	   88a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:27:35 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:28:43 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:29:05 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32192	    468	   2316	  34976	   88a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:30:27 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:31:10 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:33:11 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:34:11 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:34:51 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:130:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:130:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  130 |           sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
+      |           ^~~~~~~
+../Core/Src/main.c:130:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:131:38: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  131 |           HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
+      |                                      ^~~~~
+      |                                      |
+      |                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  32200	    468	   2316	  34984	   88a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
