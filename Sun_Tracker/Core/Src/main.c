@@ -49,9 +49,9 @@
 
 /* USER CODE BEGIN PV */
 uint32_t valorADC1 = 0, valorADC2 = 0;
+uint32_t tempoFaixa[3] = {0}, segundosTotais = 0;
 int difADCs = 0;
 float razADC = 0, v1, v2;
-char frase[100];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,6 +98,7 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_ADC2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_ADC_Start(&hadc1);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
@@ -109,6 +110,7 @@ int main(void)
   {
 	  HAL_ADC_Start(&hadc1);
 	  HAL_ADC_Start(&hadc2);
+
 	  if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
 	  {
 		  valorADC1 = HAL_ADC_GetValue(&hadc1);
@@ -118,19 +120,20 @@ int main(void)
 		  valorADC2 = HAL_ADC_GetValue(&hadc2);
 	  }
 
+	  // calcula a razão entre os LDRs. A raíz quadrada talvez solucione o problema da distância
 	  valorADC1 = 4095 - valorADC1;
 	  valorADC2 = 4095 - valorADC2;
 	  v1 = (float)valorADC1;
 	  v2 = (float)valorADC2;
-
 	  razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
+
+	  // normalização dos valores
 	  razADC = (razADC - 0.425) / (0.625 - 0.425);
 	  if(razADC < 0) razADC = 0;
 	  if(razADC > 1) razADC = 1;
-	  sprintf(frase, "v1 = %f - v2 = %f - raz = %f \n\r", v1, v2, razADC);
-	  HAL_UART_Transmit(&huart2, frase, sizeof(frase), HAL_MAX_DELAY);
-	  razADC = 120 + (razADC * 380);
 
+	  // alterando a posição do servo, vai de 120 a 500 (0° a 180°)
+	  razADC = 120 + (razADC * 380);
 	  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
 	  HAL_Delay(50);
     /* USER CODE END WHILE */
@@ -188,7 +191,33 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if (htim->Instance == TIM3 && htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
+  {
+    // lê posição atual do servo (duty cycle)
+    float pos = __HAL_TIM_GET_COMPARE(&htim1, TIM_CHANNEL_1);
 
+    // Determina faixa
+    if (pos < 245) tempoFaixa[0]++;
+    else if (pos < 370) tempoFaixa[1]++;
+    else tempoFaixa[2]++;
+
+    segundosTotais += 1;
+
+    // A cada 10 segundos, envia relatório
+    if (segundosTotais % 10 == 0)
+    {
+      char buffer[128];
+      sprintf(buffer, "\r\n[Relatorio]\r\nFaixa 1: %i\r\nFaixa 2: %i\r\nFaixa 3: %i\r\n",
+    		  tempoFaixa[0], tempoFaixa[1], tempoFaixa[2]);
+      HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+    }
+
+    // Agenda próxima captura (1 segundo depois)
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1) + 1000);
+  }
+}
 /* USER CODE END 4 */
 
 /**
