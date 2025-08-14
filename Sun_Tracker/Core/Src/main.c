@@ -52,6 +52,9 @@ uint32_t valorADC1 = 0, valorADC2 = 0;
 uint32_t tempoFaixa[3] = {0}, segundosTotais = 0, proximoEvento = 0;
 int difADCs = 0;
 float razADC = 0, v1, v2;
+int32_t encoderPos = 0;
+int32_t lastEncoderPos = 0;
+int posServo = 100;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,18 +102,37 @@ int main(void)
   MX_TIM1_Init();
   MX_ADC2_Init();
   MX_TIM3_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_ADC_Start(&hadc1);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_1);
   proximoEvento = __HAL_TIM_GET_COUNTER(&htim3) + 1000;
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, proximoEvento);
+  HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
+		encoderPos = __HAL_TIM_GET_COUNTER(&htim2);
+
+		if (encoderPos != lastEncoderPos)
+		{
+		  if ((int32_t)(encoderPos - lastEncoderPos) > 0 && posServo <= 480)
+		  {
+			  // Movimento horário
+			  posServo += 20;
+		  }
+		  else if ((int32_t)(encoderPos - lastEncoderPos) < 0 && posServo >= 120)
+		  {
+			  // Movimento anti-horário
+			  posServo -= 20;
+		  }
+		  lastEncoderPos = encoderPos;
+		}
+
 		HAL_ADC_Start(&hadc1);
 		HAL_ADC_Start(&hadc2);
 
@@ -137,11 +159,11 @@ int main(void)
 
 		// alterando a posição do servo, vai de 120 a 500 (0° a 180°)
 		razADC = 120 + (razADC * 380);
-		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
+		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, posServo);
 		HAL_Delay(50);
-    /* USER CODE END WHILE */
+		/* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
+		/* USER CODE BEGIN 3 */
 	}
   /* USER CODE END 3 */
 }

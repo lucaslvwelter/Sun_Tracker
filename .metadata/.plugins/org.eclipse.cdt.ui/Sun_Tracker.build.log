@@ -1,45 +1,45 @@
-14:56:46 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+09:31:11 **** Incremental Build of configuration Debug for project Sun_Tracker ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
-../Core/Src/main.c:215:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  215 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:237:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
       |                         ^~~~~~~
 ../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
    30 | #include "stdlib.h"
   +++ |+#include <stdio.h>
    31 | /* USER CODE END Includes */
-../Core/Src/main.c:215:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-  215 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:237:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
       |                         ^~~~~~~
-../Core/Src/main.c:215:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:215:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
-  215 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:237:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:237:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
       |                                             ~^
       |                                              |
       |                                              int
       |                                             %li
-  216 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
       |                                   ~~~~~~~~~~~~~~~~
       |                                                |
       |                                                long unsigned int
-../Core/Src/main.c:215:52: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
-  215 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:237:52: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
       |                                                   ~^
       |                                                    |
       |                                                    int
       |                                                   %li
-  216 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
       |                                                     ~~~~~~~~~~~~~~~~
       |                                                                  |
       |                                                                  long unsigned int
-../Core/Src/main.c:215:58: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
-  215 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:237:58: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
       |                                                         ~^
       |                                                          |
       |                                                          int
       |                                                         %li
-  216 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
       |                                                                       ~~~~~~~~~~~~~~~~
       |                                                                                    |
       |                                                                                    long unsigned int
@@ -49,11 +49,11 @@ Finished building target: Sun_Tracker.elf
 arm-none-eabi-size  Sun_Tracker.elf 
 arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
    text	   data	    bss	    dec	    hex	filename
-  34384	    468	   2308	  37160	   9128	Sun_Tracker.elf
+  35496	    472	   2384	  38352	   95d0	Sun_Tracker.elf
 Finished building: default.size.stdout
  
 Finished building: Sun_Tracker.list
  
 
-14:56:48 Build Finished. 0 errors, 5 warnings. (took 2s.90ms)
+09:31:12 Build Finished. 0 errors, 5 warnings. (took 875ms)
 
