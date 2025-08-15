@@ -50,11 +50,11 @@
 /* USER CODE BEGIN PV */
 uint32_t valorADC1 = 0, valorADC2 = 0;
 uint32_t tempoFaixa[3] = {0}, segundosTotais = 0, proximoEvento = 0;
+int32_t encoderPos = 0, lastEncoderPos = 0;
 int difADCs = 0;
-float razADC = 0, v1, v2;
-int32_t encoderPos = 0;
-int32_t lastEncoderPos = 0;
 int posServo = 100;
+int contManual = 0, debounce = 0;
+float razADC = 0, v1, v2;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,66 +106,78 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_ADC_Start(&hadc1);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_1);
   proximoEvento = __HAL_TIM_GET_COUNTER(&htim3) + 1000;
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, proximoEvento);
-  HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	while (1)
-	{
-		encoderPos = __HAL_TIM_GET_COUNTER(&htim2);
+  while (1)
+  {
+	  if(HAL_GPIO_ReadPin(botEncoder_GPIO_Port, botEncoder_Pin) == 1)
+	  {
+		  contManual = !contManual;
+	  }
 
-		if (encoderPos != lastEncoderPos)
-		{
-		  if ((int32_t)(encoderPos - lastEncoderPos) > 0 && posServo <= 480)
+	  // habilita a movimentação automática da placa
+	  if(contManual == 0)
+	  {
+		  HAL_ADC_Start(&hadc1);
+		  HAL_ADC_Start(&hadc2);
+
+		  if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
 		  {
-			  // Movimento horário
-			  posServo += 20;
+			  valorADC1 = HAL_ADC_GetValue(&hadc1);
 		  }
-		  else if ((int32_t)(encoderPos - lastEncoderPos) < 0 && posServo >= 120)
+		  if(HAL_ADC_PollForConversion(&hadc2, HAL_MAX_DELAY) == HAL_OK)
 		  {
-			  // Movimento anti-horário
-			  posServo -= 20;
+			  valorADC2 = HAL_ADC_GetValue(&hadc2);
 		  }
-		  lastEncoderPos = encoderPos;
-		}
 
-		HAL_ADC_Start(&hadc1);
-		HAL_ADC_Start(&hadc2);
+		  // calcula a razão entre os LDRs. A raíz quadrada talvez solucione o problema da distância
+		  valorADC1 = 4095 - valorADC1;
+		  valorADC2 = 4095 - valorADC2;
+		  v1 = (float)valorADC1;
+		  v2 = (float)valorADC2;
+		  razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
 
-		if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
-		{
-		  valorADC1 = HAL_ADC_GetValue(&hadc1);
-		}
-		if(HAL_ADC_PollForConversion(&hadc2, HAL_MAX_DELAY) == HAL_OK)
-		{
-		  valorADC2 = HAL_ADC_GetValue(&hadc2);
-		}
+		  // normalização dos valores
+		  razADC = (razADC - 0.425) / (0.625 - 0.425);
+		  if(razADC < 0) razADC = 0;
+		  if(razADC > 1) razADC = 1;
 
-		// calcula a razão entre os LDRs. A raíz quadrada talvez solucione o problema da distância
-		valorADC1 = 4095 - valorADC1;
-		valorADC2 = 4095 - valorADC2;
-		v1 = (float)valorADC1;
-		v2 = (float)valorADC2;
-		razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
+		  // alterando a posição do servo, vai de 120 a 500 (0° a 180°)
+		  razADC = 120 + (razADC * 380);
+		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
+	  }
+	  // habilita a movimentação manual da placa
+	  else
+	  {
+		  encoderPos = __HAL_TIM_GET_COUNTER(&htim2);
+		  if (encoderPos != lastEncoderPos)
+		  {
+			  if ((int32_t)(encoderPos - lastEncoderPos) > 0 && posServo <= 480)
+			  {
+				  // Movimento horário
+				  posServo += 20;
+			  }
+			  else if ((int32_t)(encoderPos - lastEncoderPos) < 0 && posServo >= 120)
+			  {
+				  // Movimento anti-horário
+				  posServo -= 20;
+			  }
+			  lastEncoderPos = encoderPos;
+		  }
+		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, posServo);
+	  }
+	  HAL_Delay(50);
+	  /* USER CODE END WHILE */
 
-		// normalização dos valores
-		razADC = (razADC - 0.425) / (0.625 - 0.425);
-		if(razADC < 0) razADC = 0;
-		if(razADC > 1) razADC = 1;
-
-		// alterando a posição do servo, vai de 120 a 500 (0° a 180°)
-		razADC = 120 + (razADC * 380);
-		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, posServo);
-		HAL_Delay(50);
-		/* USER CODE END WHILE */
-
-		/* USER CODE BEGIN 3 */
-	}
-  /* USER CODE END 3 */
+	  /* USER CODE BEGIN 3 */
+  }
+	/* USER CODE END 3 */
 }
 
 /**
@@ -231,10 +243,10 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 
 		segundosTotais += 1;
 
-		// envia o relatório a cada 1 segundos
+		// envia o relatório a cada 10 segundos
 		if (segundosTotais % 100 == 0)
 		{
-			sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+			sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
 				  tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
 			HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
 		}
