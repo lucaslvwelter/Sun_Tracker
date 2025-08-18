@@ -417,3 +417,618 @@ Finished building: default.size.stdout
  
 Finished building: Sun_Tracker.list
  
+10:15:35 **** Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/adc.d" -MT"Core/Src/adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/adc.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tim.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:249:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:249:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:249:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:249:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:249:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:249:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:18:35 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:249:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:249:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:249:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:249:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:249:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:249:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:19:33 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-size  Sun_Tracker.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+10:20:42 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:249:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:249:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:249:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:249:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:249:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:249:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:20:57 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-size  Sun_Tracker.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+10:26:48 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:29:52 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:251:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:251:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:251:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:251:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:251:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:251:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35712	    472	   2392	  38576	   96b0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:31:12 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-size  Sun_Tracker.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35712	    472	   2392	  38576	   96b0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+10:32:30 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:251:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:251:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:251:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:251:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:251:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:251:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  251 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  252 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35712	    472	   2392	  38576	   96b0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:34:04 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:249:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:249:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:249:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:249:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:249:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:249:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  249 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  250 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35672	    472	   2392	  38536	   9688	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:43:45 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:250:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  250 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:250:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  250 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:250:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:250:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  250 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  251 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:250:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  250 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  251 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:250:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  250 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  251 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35696	    472	   2392	  38560	   96a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:47:46 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-size  Sun_Tracker.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35696	    472	   2392	  38560	   96a0	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+10:54:10 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:252:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:252:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                         ^~~~~~~
+../Core/Src/main.c:252:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:252:70: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                     ~^
+      |                                                                      |
+      |                                                                      int
+      |                                                                     %li
+  253 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                   ~~~~~~~~~~~~~~~~                    
+      |                                                |
+      |                                                long unsigned int
+../Core/Src/main.c:252:84: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                   ~^
+      |                                                                                    |
+      |                                                                                    int
+      |                                                                                   %li
+  253 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                     ~~~~~~~~~~~~~~~~                
+      |                                                                  |
+      |                                                                  long unsigned int
+../Core/Src/main.c:252:98: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
+      |                                                                                                 ~^
+      |                                                                                                  |
+      |                                                                                                  int
+      |                                                                                                 %li
+  253 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                       ~~~~~~~~~~~~~~~~            
+      |                                                                                    |
+      |                                                                                    long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35720	    472	   2392	  38584	   96b8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:57:56 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:252:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i\r\nFaixa 2 [61° - 120°]: %i\r\n"
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:252:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i\r\nFaixa 2 [61° - 120°]: %i\r\n"
+      |                         ^~~~~~~
+../Core/Src/main.c:252:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:252:81: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i\r\nFaixa 2 [61° - 120°]: %i\r\n"
+      |                                                                                ~^
+      |                                                                                 |
+      |                                                                                 int
+      |                                                                                %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                          ~~~~~~~~~~~~~~~~
+      |                                                                                       |
+      |                                                                                       long unsigned int
+../Core/Src/main.c:252:109: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i\r\nFaixa 2 [61° - 120°]: %i\r\n"
+      |                                                                                                            ~^
+      |                                                                                                             |
+      |                                                                                                             int
+      |                                                                                                            %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                            ~~~~~~~~~~~~~~~~  
+      |                                                                                                         |
+      |                                                                                                         long unsigned int
+../Core/Src/main.c:252:41: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i\r\nFaixa 2 [61° - 120°]: %i\r\n"
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |                                         "Faixa 3 [121° - 180°]: %i\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                                              ~~~~~~~~~~~~~~~~
+      |                                                                                                                           |
+      |                                                                                                                           long unsigned int
+../Core/Src/main.c:253:66: note: format string is defined here
+  253 |                                         "Faixa 3 [121° - 180°]: %i\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                 ~^
+      |                                                                  |
+      |                                                                  int
+      |                                                                 %li
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35768	    472	   2392	  38632	   96e8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+10:59:24 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:252:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:252:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                         ^~~~~~~
+../Core/Src/main.c:252:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:252:81: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                                                                ~^
+      |                                                                                 |
+      |                                                                                 int
+      |                                                                                %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                            ~~~~~~~~~~~~~~~~
+      |                                                                                         |
+      |                                                                                         long unsigned int
+../Core/Src/main.c:252:111: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                                                                                              ~^
+      |                                                                                                               |
+      |                                                                                                               int
+      |                                                                                                              %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                              ~~~~~~~~~~~~~~~~  
+      |                                                                                                           |
+      |                                                                                                           long unsigned int
+../Core/Src/main.c:252:41: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                                                ~~~~~~~~~~~~~~~~
+      |                                                                                                                             |
+      |                                                                                                                             long unsigned int
+../Core/Src/main.c:253:66: note: format string is defined here
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                 ~^
+      |                                                                  |
+      |                                                                  int
+      |                                                                 %li
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35768	    472	   2392	  38632	   96e8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 

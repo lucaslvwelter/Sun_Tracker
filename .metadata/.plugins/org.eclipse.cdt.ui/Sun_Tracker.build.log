@@ -1,59 +1,62 @@
-09:31:11 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+10:59:24 **** Incremental Build of configuration Debug for project Sun_Tracker ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
-../Core/Src/main.c:237:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:252:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
       |                         ^~~~~~~
 ../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
    30 | #include "stdlib.h"
   +++ |+#include <stdio.h>
    31 | /* USER CODE END Includes */
-../Core/Src/main.c:237:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
+../Core/Src/main.c:252:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
       |                         ^~~~~~~
-../Core/Src/main.c:237:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:237:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
-  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
-      |                                             ~^
-      |                                              |
-      |                                              int
-      |                                             %li
-  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
-      |                                   ~~~~~~~~~~~~~~~~
-      |                                                |
-      |                                                long unsigned int
-../Core/Src/main.c:237:52: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
-  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
-      |                                                   ~^
-      |                                                    |
-      |                                                    int
-      |                                                   %li
-  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
-      |                                                     ~~~~~~~~~~~~~~~~
+../Core/Src/main.c:252:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:252:81: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                                                                ~^
+      |                                                                                 |
+      |                                                                                 int
+      |                                                                                %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                            ~~~~~~~~~~~~~~~~
+      |                                                                                         |
+      |                                                                                         long unsigned int
+../Core/Src/main.c:252:111: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                                                                                              ~^
+      |                                                                                                               |
+      |                                                                                                               int
+      |                                                                                                              %li
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                              ~~~~~~~~~~~~~~~~  
+      |                                                                                                           |
+      |                                                                                                           long unsigned int
+../Core/Src/main.c:252:41: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  252 |                         sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                                                                ~~~~~~~~~~~~~~~~
+      |                                                                                                                             |
+      |                                                                                                                             long unsigned int
+../Core/Src/main.c:253:66: note: format string is defined here
+  253 |                                         "Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                                 ~^
       |                                                                  |
-      |                                                                  long unsigned int
-../Core/Src/main.c:237:58: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
-  237 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i\r\n",
-      |                                                         ~^
-      |                                                          |
-      |                                                          int
-      |                                                         %li
-  238 |                                   tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
-      |                                                                       ~~~~~~~~~~~~~~~~
-      |                                                                                    |
-      |                                                                                    long unsigned int
+      |                                                                  int
+      |                                                                 %li
 arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Sun_Tracker.elf
  
 arm-none-eabi-size  Sun_Tracker.elf 
 arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
    text	   data	    bss	    dec	    hex	filename
-  35496	    472	   2384	  38352	   95d0	Sun_Tracker.elf
+  35768	    472	   2392	  38632	   96e8	Sun_Tracker.elf
 Finished building: default.size.stdout
  
 Finished building: Sun_Tracker.list
  
 
-09:31:12 Build Finished. 0 errors, 5 warnings. (took 875ms)
+10:59:25 Build Finished. 0 errors, 5 warnings. (took 1s.77ms)
 

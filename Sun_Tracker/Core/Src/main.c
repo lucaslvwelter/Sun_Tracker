@@ -53,7 +53,7 @@ uint32_t tempoFaixa[3] = {0}, segundosTotais = 0, proximoEvento = 0;
 int32_t encoderPos = 0, lastEncoderPos = 0;
 int difADCs = 0;
 int posServo = 100;
-int contManual = 0, debounce = 0;
+int contManual = 0, press = 0;
 float razADC = 0, v1, v2;
 /* USER CODE END PV */
 
@@ -116,10 +116,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(HAL_GPIO_ReadPin(botEncoder_GPIO_Port, botEncoder_Pin) == 1)
+	  if(HAL_GPIO_ReadPin(botEncoder_GPIO_Port, botEncoder_Pin) == 0)
 	  {
-		  contManual = !contManual;
+		  if (press == 0) contManual = !contManual;
+		  press = 1;
 	  }
+	  else press = 0;
 
 	  // habilita a movimentação automática da placa
 	  if(contManual == 0)
@@ -150,6 +152,7 @@ int main(void)
 
 		  // alterando a posição do servo, vai de 120 a 500 (0° a 180°)
 		  razADC = 120 + (razADC * 380);
+		  posServo = razADC;
 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
 	  }
 	  // habilita a movimentação manual da placa
@@ -173,11 +176,11 @@ int main(void)
 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, posServo);
 	  }
 	  HAL_Delay(50);
-	  /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-	  /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
   }
-	/* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -246,8 +249,8 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 		// envia o relatório a cada 10 segundos
 		if (segundosTotais % 100 == 0)
 		{
-			sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1:%i\r\nFaixa 2:%i\r\nFaixa 3:%i\r\n",
-				  tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+			sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+					"Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
 			HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
 		}
 
