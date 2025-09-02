@@ -1032,3 +1032,444 @@ Finished building: default.size.stdout
  
 Finished building: Sun_Tracker.list
  
+08:33:53 **** Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:253:25: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i");
+      |                         ^~~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:253:25: warning: incompatible implicit declaration of built-in function 'snprintf' [-Wbuiltin-declaration-mismatch]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i");
+      |                         ^~~~~~~~
+../Core/Src/main.c:253:25: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+../Core/Src/main.c:253:42: warning: passing argument 2 of 'snprintf' makes integer from pointer without a cast [-Wint-conversion]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i");
+      |                                          ^~~~~~~~~~~~~~~~~~~
+      |                                          |
+      |                                          char *
+../Core/Src/main.c:253:42: note: expected 'unsigned int' but argument is of type 'char *'
+../Core/Src/main.c:253:25: error: too few arguments to function 'snprintf'
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i");
+      |                         ^~~~~~~~
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+08:34:43 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:253:25: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                         ^~~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:253:25: warning: incompatible implicit declaration of built-in function 'snprintf' [-Wbuiltin-declaration-mismatch]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                         ^~~~~~~~
+../Core/Src/main.c:253:25: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+../Core/Src/main.c:253:42: warning: passing argument 2 of 'snprintf' makes integer from pointer without a cast [-Wint-conversion]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                          ^~~~~~~~~~~~~~~~~~~
+      |                                          |
+      |                                          char *
+../Core/Src/main.c:253:42: note: expected 'unsigned int' but argument is of type 'char *'
+../Core/Src/main.c:253:76: warning: passing argument 3 of 'snprintf' makes pointer from integer without a cast [-Wint-conversion]
+  253 |                         snprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                               ~~~~~~~~~~~~~^~~
+      |                                                                            |
+      |                                                                            long unsigned int
+../Core/Src/main.c:253:76: note: expected 'const char *' but argument is of type 'long unsigned int'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35736	    472	   2392	  38600	   96c8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+08:39:51 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:253:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  253 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:253:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  253 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                         ^~~~~~~
+../Core/Src/main.c:253:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:253:46: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                             ~^               ~~~~~~~~~~~~~~~~
+      |                                              |                            |
+      |                                              int                          long unsigned int
+      |                                             %li
+../Core/Src/main.c:253:52: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                   ~^                           ~~~~~~~~~~~~~~~~
+      |                                                    |                                        |
+      |                                                    int                                      long unsigned int
+      |                                                   %li
+../Core/Src/main.c:253:58: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                         ~^                                       ~~~~~~~~~~~~~~~~
+      |                                                          |                                                    |
+      |                                                          int                                                  long unsigned int
+      |                                                         %li
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35688	    472	   2392	  38552	   9698	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+14:18:20 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:253:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:253:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                         ^~~~~~~
+../Core/Src/main.c:253:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:253:52: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                   ~^                                ~~~~~~~~~~~~~~~~
+      |                                                    |                                             |
+      |                                                    int                                           long unsigned int
+      |                                                   %li
+../Core/Src/main.c:253:64: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                               ~^
+      |                                                                |
+      |                                                                int
+      |                                                               %li
+  254 |                                         tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                         ~~~~~~~~~~~~~~~~        
+      |                                                      |
+      |                                                      long unsigned int
+../Core/Src/main.c:253:76: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                                           ~^
+      |                                                                            |
+      |                                                                            int
+      |                                                                           %li
+  254 |                                         tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                           ~~~~~~~~~~~~~~~~  
+      |                                                                        |
+      |                                                                        long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35704	    472	   2392	  38568	   96a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+14:21:02 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:253:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:253:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                         ^~~~~~~
+../Core/Src/main.c:253:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:253:52: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                   ~^                                ~~~~~~~~~~~~~~~~
+      |                                                    |                                             |
+      |                                                    int                                           long unsigned int
+      |                                                   %li
+../Core/Src/main.c:253:64: warning: format '%i' expects argument of type 'int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                               ~^
+      |                                                                |
+      |                                                                int
+      |                                                               %li
+  254 |                                         tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                         ~~~~~~~~~~~~~~~~        
+      |                                                      |
+      |                                                      long unsigned int
+../Core/Src/main.c:253:76: warning: format '%i' expects argument of type 'int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  253 |                         sprintf(buffer, "{\"f1\": %i, \"f2\": %i, \"f3\": %i}\n\r", tempoFaixa[0]/10,
+      |                                                                           ~^
+      |                                                                            |
+      |                                                                            int
+      |                                                                           %li
+  254 |                                         tempoFaixa[1]/10, tempoFaixa[2]/10);
+      |                                                           ~~~~~~~~~~~~~~~~  
+      |                                                                        |
+      |                                                                        long unsigned int
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35704	    472	   2392	  38568	   96a8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+14:51:37 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:255:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  255 |                         sprintf(buffer, "{\"angulo\": %i}\n\r", posServo);
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:255:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  255 |                         sprintf(buffer, "{\"angulo\": %i}\n\r", posServo);
+      |                         ^~~~~~~
+../Core/Src/main.c:255:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35656	    472	   2392	  38520	   9678	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+14:58:06 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:257:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  257 |                         sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                         ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:257:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  257 |                         sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                         ^~~~~~~
+../Core/Src/main.c:257:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35736	    472	   2392	  38600	   96c8	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:06:36 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:243:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  243 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:243:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  243 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:243:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:243:25: error: 'buffer' undeclared (first use in this function)
+  243 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                         ^~~~~~
+../Core/Src/main.c:243:25: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:07:16 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:09:06 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:11:05 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:11:47 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:12:18 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 
+15:13:12 **** Incremental Build of configuration Debug for project Sun_Tracker ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_OC_DelayElapsedCallback':
+../Core/Src/main.c:244:17: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   30 | #include "stdlib.h"
+  +++ |+#include <stdio.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:244:17: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  244 |                 sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
+      |                 ^~~~~~~
+../Core/Src/main.c:244:17: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+arm-none-eabi-gcc -o "Sun_Tracker.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\lucas\Documents\4º Ano\Micros_2\Sun_Tracker\Sun_Tracker\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sun_Tracker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Sun_Tracker.elf
+ 
+arm-none-eabi-size  Sun_Tracker.elf 
+arm-none-eabi-objdump -h -S Sun_Tracker.elf  > "Sun_Tracker.list"
+   text	   data	    bss	    dec	    hex	filename
+  35608	    472	   2376	  38456	   9638	Sun_Tracker.elf
+Finished building: default.size.stdout
+ 
+Finished building: Sun_Tracker.list
+ 

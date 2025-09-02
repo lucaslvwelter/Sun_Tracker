@@ -1,0 +1,123 @@
+[
+    {
+        "id": "ada304b46a354ea0",
+        "type": "tab",
+        "label": "STM32 Faixas",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b2b2a6681f2a56ae",
+        "type": "serial in",
+        "z": "ada304b46a354ea0",
+        "name": "Serial STM32",
+        "serial": "045c2692d8a655fd",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "bae3baad1e84129b"
+            ]
+        ]
+    },
+    {
+        "id": "a7f4335189dd387b",
+        "type": "function",
+        "z": "ada304b46a354ea0",
+        "name": "Parse Faixas",
+        "func": "let dados = msg.payload;\nlet saida = [];\n\n// cada variável vira uma mensagem separada\nsaida.push({ topic: \"angulo\", payload: dados.angulo });\n\nreturn [saida];\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 320,
+        "wires": [
+            [
+                "2d5979816ab112d5"
+            ]
+        ]
+    },
+    {
+        "id": "bae3baad1e84129b",
+        "type": "json",
+        "z": "ada304b46a354ea0",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "a7f4335189dd387b"
+            ]
+        ]
+    },
+    {
+        "id": "2d5979816ab112d5",
+        "type": "ui_gauge",
+        "z": "ada304b46a354ea0",
+        "name": "",
+        "group": "monitor_group",
+        "order": 5,
+        "width": "18",
+        "height": "12",
+        "gtype": "gage",
+        "title": "Angulação da placa",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 850,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "045c2692d8a655fd",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM7",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "monitor_group",
+        "type": "ui_group",
+        "name": "Monitor",
+        "tab": "monitor_tab",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "monitor_tab",
+        "type": "ui_tab",
+        "name": "STM32 Monitor",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

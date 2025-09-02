@@ -58,7 +58,6 @@ float razADC = 0, v1, v2;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-int map(int x, int in_min, int in_max, int out_min, int out_max);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -238,21 +237,27 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 		// lê posição atual do servo (duty cycle)
 		float pos = __HAL_TIM_GET_COMPARE(&htim1, TIM_CHANNEL_1);
 
-		// envia o relatório a cada 0.1 segundo
-		char buffer[32];
-		int angulo = map(pos, 500, 120, 0, 180);
-		sprintf(buffer, "{\"angulo\": %i}\n\r", angulo);
-		HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+		// determina a faixa (0 - 60 | 60 - 120 | 120 - 180)
+		if (pos < 245) tempoFaixa[0]++;
+		else if (pos < 370) tempoFaixa[1]++;
+		else tempoFaixa[2]++;
+		char buffer[128];
 
-		// agenda próxima captura (0.1 segundo depois)
+		segundosTotais += 1;
+
+		// envia o relatório a cada 10 segundos
+		if (segundosTotais % 100 == 0)
+		{
+			//sprintf(buffer, "\r\n[Relatório]\r\nFaixa 1 [0 - 60°]: %i s\r\nFaixa 2 [61° - 120°]: %i s\r\n"
+				//	"Faixa 3 [121° - 180°]: %i s\r\n", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+			sprintf(buffer, "F1:%i;F2:%i;F3:%i", tempoFaixa[0]/10, tempoFaixa[1]/10, tempoFaixa[2]/10);
+			HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+		}
+
+		// agenda próxima captura (1 segundo depois)
 		proximoEvento += 1000;
 		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, proximoEvento);
 	}
-}
-
-int map(int x, int in_min, int in_max, int out_min, int out_max)
-{
-	return ((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
 }
 /* USER CODE END 4 */
 
