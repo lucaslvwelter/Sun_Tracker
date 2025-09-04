@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -48,9 +49,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint16_t valoresADCs[2] = {0,0};
 uint32_t valorADC1 = 0, valorADC2 = 0;
-uint32_t tempoFaixa[3] = {0}, segundosTotais = 0, proximoEvento = 0;
-int32_t encoderPos = 0, lastEncoderPos = 0;
+uint32_t proximoEvento = 0;
+int32_t posEncoder = 0, ultimaPosEncoder= 0;
 int posServo = 100;
 int contManual = 0, press = 0;
 float razADC = 0, v1, v2;
@@ -58,7 +60,6 @@ float razADC = 0, v1, v2;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-int map(int x, int in_min, int in_max, int out_min, int out_max);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -97,19 +98,25 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
-  MX_ADC2_Init();
   MX_TIM3_Init();
   MX_TIM2_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADC_Start(&hadc1);
+  //HAL_ADC_Start(&hadc1);
+  HAL_ADC_Start_DMA(&hadc1, valoresADCs, 2);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIM_Encoder_Start(&htim2, TIM_CHANNEL_ALL);
   HAL_TIM_OC_Start_IT(&htim3, TIM_CHANNEL_1);
+  //HAL_TIM_Base_Start(&htim8);
   proximoEvento = __HAL_TIM_GET_COUNTER(&htim3) + 1000;
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, proximoEvento);
+
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -123,55 +130,23 @@ int main(void)
 	  }
 	  else press = 0;
 
-	  // habilita a movimentação automática da placa
-	  if(contManual == 0)
-	  {
-		  HAL_ADC_Start(&hadc1);
-		  HAL_ADC_Start(&hadc2);
-
-		  if(HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
-		  {
-			  valorADC1 = HAL_ADC_GetValue(&hadc1);
-		  }
-		  if(HAL_ADC_PollForConversion(&hadc2, HAL_MAX_DELAY) == HAL_OK)
-		  {
-			  valorADC2 = HAL_ADC_GetValue(&hadc2);
-		  }
-
-		  // calcula a razão entre os LDRs
-		  valorADC1 = 4095 - valorADC1;
-		  valorADC2 = 4095 - valorADC2;
-		  v1 = (float)valorADC1;
-		  v2 = (float)valorADC2;
-		  razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
-
-		  // normalização dos valores
-		  razADC = (razADC - 0.425) / (0.625 - 0.425);
-		  if(razADC < 0) razADC = 0;
-		  if(razADC > 1) razADC = 1;
-
-		  // alterando a posição do servo, vai de 120 a 500 (0° a 180°)
-		  razADC = 120 + (razADC * 380);
-		  posServo = razADC;
-		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
-	  }
 	  // habilita a movimentação manual da placa
-	  else
+	  if(contManual == 1)
 	  {
-		  encoderPos = __HAL_TIM_GET_COUNTER(&htim2);
-		  if (encoderPos != lastEncoderPos)
+		  posEncoder = __HAL_TIM_GET_COUNTER(&htim2);
+		  if (posEncoder != ultimaPosEncoder)
 		  {
-			  if ((int32_t)(encoderPos - lastEncoderPos) > 0 && posServo <= 480)
+			  if ((int32_t)(posEncoder- ultimaPosEncoder) > 0 && posServo <= 480)
 			  {
 				  // Movimento horário
 				  posServo += 20;
 			  }
-			  else if ((int32_t)(encoderPos - lastEncoderPos) < 0 && posServo >= 120)
+			  else if ((int32_t)(posEncoder - ultimaPosEncoder) < 0 && posServo >= 120)
 			  {
 				  // Movimento anti-horário
 				  posServo -= 20;
 			  }
-			  lastEncoderPos = encoderPos;
+			  ultimaPosEncoder = posEncoder;
 		  }
 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, posServo);
 	  }
@@ -253,6 +228,32 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 int map(int x, int in_min, int in_max, int out_min, int out_max)
 {
 	return ((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	if(contManual == 0)
+	{
+	  valorADC1 = valoresADCs[0];
+	  valorADC2 = valoresADCs[1];
+
+	  // calcula a razão entre os LDRs
+	  valorADC1 = 4095 - valorADC1;
+	  valorADC2 = 4095 - valorADC2;
+	  v1 = (float)valorADC1;
+	  v2 = (float)valorADC2;
+	  razADC = (sqrt(v1) / (sqrt(v1) + sqrt(v2)));
+
+	  // normalização dos valores
+	  razADC = (razADC - 0.425) / (0.625 - 0.425);
+	  if(razADC < 0) razADC = 0;
+	  if(razADC > 1) razADC = 1;
+
+	  // alterando a posição do servo, vai de 120 a 500 (0° a 180°)
+	  razADC = 120 + (razADC * 380);
+	  posServo = razADC;
+	  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, razADC);
+	}
 }
 /* USER CODE END 4 */
 
